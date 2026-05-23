@@ -1,4 +1,4 @@
-# Playwright Automation Assessment – Task 4
+# Playwright Login Automation – SauceDemo
 
 A simple end-to-end automation test for validating user login functionality on the SauceDemo application using Playwright.
 
@@ -84,13 +84,19 @@ The main test file is located inside the `tests/` folder and contains a single e
 import { test, expect } from '@playwright/test';
 
 test('successful login', async ({ page }) => {
+  // Open login page
   await page.goto('https://www.saucedemo.com/');
 
+  // Enter username
   await page.locator('[data-test="username"]').fill('standard_user');
+
+  // Enter password
   await page.locator('[data-test="password"]').fill('secret_sauce');
 
+  // Click login button
   await page.locator('[data-test="login-button"]').click();
 
+  // Verify successful login
   await expect(page).toHaveURL(/inventory/);
 });
 ```
